@@ -1,17 +1,15 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-	id("org.springframework.boot") version "3.1.5"
-	id("io.spring.dependency-management") version "1.1.3"
-	kotlin("jvm") version "1.8.22"
-	kotlin("plugin.spring") version "1.8.22"
+	id("org.springframework.boot") version "3.5.8"
+	id("io.spring.dependency-management") version "1.1.7"
+	kotlin("jvm") version "2.2.21"
+	kotlin("plugin.spring") version "2.2.21"
 }
 
 group = "com.github.esslerc"
 version = "0.0.1-alpha"
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
@@ -23,13 +21,6 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
-tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs += "-Xjsr305=strict"
-		jvmTarget = "17"
-	}
-}
-
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
@@ -37,6 +28,5 @@ tasks.withType<Test> {
 tasks {
 	bootJar {
 		archiveFileName.set("nim-$version.jar")
-		launchScript()
 	}
 }
